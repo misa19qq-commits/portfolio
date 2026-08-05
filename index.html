@@ -33,24 +33,40 @@
 </head>
 
 <body>
-
-<script>
-  const password = "1999";
-
-  // すでにパスワード認証済みかチェック
-  if (sessionStorage.getItem("authenticated") !== "true") {
-    const input = prompt("パスワードを入力してください");
-
-    if (input === password) {
-      // パスワードが合っていたら「認証済み」として保存
-      sessionStorage.setItem("authenticated", "true");
-    } else {
-      // 違っていたら画面を書き換えて終了
-      document.body.innerHTML = "<h1>パスワードが違います</h1>";
+<!-- 🔒 最初は画面全体を絶対に表示させないCSS -->
+  <style>
+    body {
+      display: none;
     }
-  }
-</script>
+  </style>
+</head>
+<body>
 
+  <!-- ここに元々のポートフォリオのHTMLの中身が入ります -->
+
+  <!-- 🔒 安全なパスワード認証JS -->
+  <script>
+    const password = "1999";
+
+    // すでにパスワード認証済みかチェック
+    if (sessionStorage.getItem("authenticated") === "true") {
+      // 認証済みなら画面を表示
+      document.body.style.display = "block";
+    } else {
+      // 未認証ならパスワードを要求
+      const input = prompt("パスワードを入力してください");
+
+      if (input === password) {
+        // パスワード正解：認証状態を記憶して画面を表示
+        sessionStorage.setItem("authenticated", "true");
+        document.body.style.display = "block";
+      } else {
+        // 不正解：画面を完全に上書きして「非表示」を解除
+        document.body.innerHTML = "<h1 style='text-align:center; margin-top:50px;'>パスワードが違います</h1>";
+        document.body.style.display = "block";
+      }
+    }
+  </script>
   
 
   <div class="wrapper">
