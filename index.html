@@ -34,7 +34,22 @@
 
 <body>
 
+<script>
+  const password = "1999";
 
+  // すでにパスワード認証済みかチェック
+  if (sessionStorage.getItem("authenticated") !== "true") {
+    const input = prompt("パスワードを入力してください");
+
+    if (input === password) {
+      // パスワードが合っていたら「認証済み」として保存
+      sessionStorage.setItem("authenticated", "true");
+    } else {
+      // 違っていたら画面を書き換えて終了
+      document.body.innerHTML = "<h1>パスワードが違います</h1>";
+    }
+  }
+</script>
 
   
 
