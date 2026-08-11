@@ -34,61 +34,13 @@
   <link rel="shortcut icon" href="img/favicon.ico" />
   <link rel="canonical" href="https://portfolio-misaki.vercel.app" />
 </head>
-<body>
 
   <!-- ========================================== -->
   <!-- ここに元のポートフォリオのHTMLの中身が入ります -->
   <!-- ========================================== -->
 
 
-  <!-- 🔒 完全にブロック＆安全にCSS適用するJS（</body>の直前に置く） -->
-  <script>
-    (function() {
-      const password = "1999";
 
-      function showPage() {
-        // 非表示解除して元のCSSを100%生かす
-        document.body.style.setProperty("display", "block", "important");
-      }
-
-      if (sessionStorage.getItem("authenticated") === "true") {
-        showPage();
-      } else {
-        const input = prompt("パスワードを入力してください");
-
-        if (input === password) {
-          sessionStorage.setItem("authenticated", "true");
-          showPage();
-        } else {
-          // 不正解時はサイトをまるごと消去＆スクロール禁止
-          document.documentElement.innerHTML = `
-            <head>
-              <meta charset="utf-8">
-              <meta name="viewport" content="width=device-width,initial-scale=1.0">
-              <style>
-                html, body {
-                  height: 100%;
-                  margin: 0;
-                  padding: 0;
-                  overflow: hidden !important;
-                  background-color: #fff;
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  font-family: sans-serif;
-                }
-              </style>
-            </head>
-            <body>
-              <h1>パスワードが違います</h1>
-            </body>
-          `;
-        }
-      }
-    })();
-  </script>
-</body>
-</html>
 <body>
 <!-- 🔒 最初は画面全体を絶対に表示させないCSS -->
   <style>
