@@ -1,37 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="WebデザイナーMisaki Kamura ポートフォリオ">
-  <meta property="og:url" content="https://portfolio-misaki.vercel.app">
-  <meta property="og:description" content="Misaki Kamuraのポートフォリオサイトです。">
-  <meta property="og:image" content="img/ogp.png">
-  <meta name="description" content="Misaki Kamuraのポートフォリオサイトです" />
-  <title>Misaki Kamura ポートフォリオ</title>
-
-  <!-- 🔒 パスワード入力前に一瞬見えないように隠す設定 -->
-  <style>
-    body {
-      display: none;
-    }
-  </style>
-
-  <!-- Google Fonts（フォント・アイコン） -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Mynerve&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
-  <!-- CSSファイル -->
-  <link href="css/ress.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="css/style.css" media="all" rel="stylesheet" type="text/css" />
-
-  <!-- ファビコン・URL設定 -->
-  <link rel="shortcut icon" href="img/favicon.ico" />
-  <link rel="canonical" href="https://portfolio-misaki.vercel.app" />
+  <!-- さっき整理した<head>の中身 -->
 </head>
+<body>
+
+  <!-- --------------------------------------- -->
+  <!-- ここにヘッダーや作品一覧など、           -->
+  <!-- 元々のポートフォリオのHTMLの中身が入る  -->
+  <!-- --------------------------------------- -->
+
+  <!-- 🔒 ここ！</body>のすぐ直前に貼り付けます！ -->
+  <script>
+    (function() {
+      const password = "1999";
+
+      if (sessionStorage.getItem("authenticated") === "true") {
+        document.body.style.display = "block";
+      } else {
+        const input = prompt("パスワードを入力してください");
+
+        if (input === password) {
+          sessionStorage.setItem("authenticated", "true");
+          document.body.style.display = "block";
+        } else {
+          document.documentElement.innerHTML = `
+            <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width,initial-scale=1.0">
+              <style>
+                html, body {
+                  height: 100%;
+                  margin: 0;
+                  padding: 0;
+                  overflow: hidden !important;
+                  background-color: #fff;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-family: sans-serif;
+                }
+              </style>
+            </head>
+            <body>
+              <h1>パスワードが違います</h1>
+            </body>
+          `;
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
 
 <body>
 <!-- 🔒 最初は画面全体を絶対に表示させないCSS -->
