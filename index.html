@@ -70,6 +70,52 @@
     }
   </script>
 
+
+  <!-- 🔒 パスワード認証スクリプト（初回のみ・保存機能付き） -->
+  <script>
+    const password = "1999"; // 🔒 設定するパスワード
+    
+    // 1. ブラウザがすでに「認証OK」と覚えているかチェック
+    if (localStorage.getItem("is_authenticated") === "true") {
+      
+      // 覚えいれば、パスワードを聞かずに画面を表示！
+      document.body.style.display = "block";
+      
+    } else {
+      
+      // 2. まだ覚えていなければ（初回アクセスなら）パスワードを聞く
+      const input = prompt("パスワードを入力してください");
+
+      if (input === password) {
+        // パスワード正解！ブラウザに「認証OK」と覚えさせる
+        localStorage.setItem("is_authenticated", "true");
+        document.body.style.display = "block";
+      } else {
+        // パスワード不正解の場合はエラー画面にしてストップ
+        document.documentElement.innerHTML = `
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1.0">
+            <style>
+              body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                font-family: sans-serif;
+              }
+            </style>
+          </head>
+          <body>
+            <h1>パスワードが違います</h1>
+          </body>
+        `;
+        window.stop(); 
+      }
+    }
+  </script>
+
   <div class="wrapper">
 
     <!-- header -->
