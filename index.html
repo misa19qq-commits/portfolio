@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
   <meta charset="utf-8">
@@ -11,37 +11,62 @@
   <meta property="og:image" content="img/ogp.png">
   <meta name="description" content="Misaki Kamuraのポートフォリオサイトです" />
   <title>Misaki Kamura ポートフォリオ</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> -->
+
+  <!-- 🔒 パスワード入力が終わるまで画面を真っ白にして隠す設定 -->
+  <style>
+    body {
+      display: none;
+    }
+  </style>
+
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
   <link href="css/ress.css" media="all" rel="stylesheet" type="text/css" />
   <link href="css/style.css" media="all" rel="stylesheet" type="text/css" />
 
-
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Mynerve&display=swap" rel="stylesheet">
 
-
   <link rel="shortcut icon" href="img/favicon.ico" />
-  <link rel=”canonical” href=”URLが入る” />
-
-
+  <link rel="canonical" href="URLが入る" />
 
 </head>
 
 <body>
 
-
+  <!-- 🔒 パスワード認証スクリプト -->
   <script>
     const password = "1999";
-
     const input = prompt("パスワードを入力してください");
 
-    if (input !== password) {
-      document.body.innerHTML = "パスワードが違います";
+    if (input === password) {
+      // パスワードが合っていれば、隠していた画面を表示する
+      document.body.style.display = "block";
+    } else {
+      // パスワードが違う場合、画面をエラーメッセージだけにして、
+      // これより下のHTMLの読み込みを【完全にストップ】させる
+      document.documentElement.innerHTML = `
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width,initial-scale=1.0">
+          <style>
+            body {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              margin: 0;
+              font-family: sans-serif;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>パスワードが違います</h1>
+        </body>
+      `;
+      window.stop(); // 🚨重要：ここでHTMLの読み込みを強制終了！
     }
   </script>
 
@@ -58,15 +83,12 @@
             <li class="header-nav-item"><a href="#works">Works</a></li>
             <li class="header-nav-item"><a href="#skill">Skill</a></li>
             <li class="header-nav-item"><a href="#strengths">Strengths</a></li>
-
             <li class="header-nav-item"><a href="#contact">Contact</a></li>
           </ul>
         </nav>
       </div>
     </header>
     <!-- /header -->
-
-
 
     <main class="content">
 
@@ -76,27 +98,12 @@
       </div>
       <!-- /main-visual -->
 
-
-
       <div class="profile">
         <div class="inner">
-
           <p class="profile-title purupuru">信頼から生まれるつながり</p>
-
-
-
-
-
-
-
-
           <p class="profile-text">
-            現職では、お客様との信頼関係を大切にし、課題や想いに寄り添ったHP制作を行っています。
-
-
+            現職では、お客様との信頼関係を大切にし、課題や想いに寄り添ったHP制作を行っています。<br>
             前向きな姿勢と柔軟な対応力を活かし、周囲と連携しながらより良い成果へつなげることを大切にしています。
-
-
           </p>
         </div>
       </div>
@@ -110,13 +117,11 @@
         <div class="inner">
           <h2 class="title en">Works</h2>
           <p class="title_p">実績紹介</p>
-
           <p class="profile-text">
-            90件以上のHPディレクション・構築（2026年8月時点）
-            企画・進行管理からサイト構築まで、一貫したHP制作を行ってきました。
+            90件以上のHPディレクション・構築（2026年8月時点）<br>
+            企画・進行管理からサイト構築まで、一貫したHP制作を行ってきました。<br>
             制作期間の短縮を図るため、ワイヤーフレーム作成を省略し、WordPress上でのダイレクトなレイアウト構築を実施しています。スピードと品質の両立を意識して仕上げました。
           </p>
-
 
           <div class="works-list">
             <a class="works-item" href="works-01.html">
@@ -144,43 +149,36 @@
               <p class="works-name">エイコワークス</p>
               <p class="works-info">https://www.eiko-works.com</p>
             </a>
-
             <a class="works-item" href="works-06.html">
               <p class="works-img"><img src="img/sggiken.jpg" alt="" /></p>
               <p class="works-name">合同会社SG技研様</p>
               <p class="works-info">https://sg-giken.com</p>
             </a>
-
             <a class="works-item" href="works-07.html">
               <p class="works-img"><img src="img/miyano.jpg" alt="" /></p>
               <p class="works-name">みやの工務店様</p>
               <p class="works-info">https://www.m-koumuten38.jp</p>
             </a>
-
             <a class="works-item" href="works-08.html">
               <p class="works-img"><img src="img/tsunaidatetote.jpg" alt="" /></p>
               <p class="works-name">一般社団法人つないだ手と手様</p>
               <p class="works-info">https://www.tsunaidatetote.jp</p>
             </a>
-
             <a class="works-item" href="works-09.html">
               <p class="works-img"><img src="img/namikimoa.jpg" alt="" /></p>
               <p class="works-name">並木モアサービス様</p>
               <p class="works-info">https://www.namiki-lawnmower.com</p>
             </a>
-
             <a class="works-item" href="works-10.html">
               <p class="works-img"><img src="img/higashibaba.jpg" alt="" /></p>
               <p class="works-name">有限会社東馬場農場様</p>
               <p class="works-info">https://www.higashibaba-farm.co.jp</p>
             </a>
-
             <a class="works-item" href="works-11.html">
               <p class="works-img"><img src="img/farme.jpg" alt="" /></p>
               <p class="works-name">株式会社Farme様</p>
               <p class="works-info">https://farme.jp</p>
             </a>
-
             <a class="works-item" href="works-12.html">
               <p class="works-img"><img src="img/honu.jpg" alt="" /></p>
               <p class="works-name">合同会社Honu様</p>
@@ -196,7 +194,6 @@
         <div class="inner">
           <h2 class="title en">Skill</h2>
           <p class="title_p">スキル</p>
-
 
           <div class="skill-list">
             <div class="skill-item">
@@ -214,7 +211,8 @@
                 <h3 class="skill-name">CMS & Server</h3>
                 <p class="skill-text">
                   WordPressを使用したサイト構築を得意とし、テーマ・プラグインの選定から公開まで対応可能です。
-                  FTPソフトを使用したファイル管理や、サーバー・ドメイン移行などの環境構築にも対応しています。 </p>
+                  FTPソフトを使用したファイル管理や、サーバー・ドメイン移行などの環境構築にも対応しています。
+                </p>
               </div>
             </div>
             <div class="skill-item">
@@ -222,7 +220,8 @@
               <div class="skill-body">
                 <h3 class="skill-name">Photoshop / Illustrator</h3>
                 <p class="skill-text">
-                  Webサイト制作に必要な画像の加工・サイズ調整、バナー等の画像素材作成が可能です。</p>
+                  Webサイト制作に必要な画像の加工・サイズ調整、バナー等の画像素材作成が可能です。
+                </p>
               </div>
             </div>
             <div class="skill-item">
@@ -230,20 +229,16 @@
               <div class="skill-body">
                 <h3 class="skill-name">Analytics & SEO</h3>
                 <p class="skill-text">
-                  Google Google アナリティクス（GA4）やサーチコンソールの初期設定・連携に対応可能です。
+                  Google アナリティクス（GA4）やサーチコンソールの初期設定・連携に対応可能です。
                 </p>
               </div>
             </div>
-
-
           </div>
         </div>
       </section>
       <!-- /skill -->
 
-
-
-      <!-- skill -->
+      <!-- strengths -->
       <section class="strengths section" id="strengths">
         <div class="inner">
           <h2 class="title en">Strengths</h2>
@@ -260,8 +255,6 @@
                 </p>
               </div>
             </div>
-
-
             <div class="skill-item">
               <p class="skill-img"><img src="img/strengths02_icon.png" alt=""></p>
               <div class="skill-body">
@@ -272,8 +265,6 @@
                 </p>
               </div>
             </div>
-
-
             <div class="skill-item">
               <p class="skill-img"><img src="img/strengths03_icon.png" alt=""></p>
               <div class="skill-body">
@@ -284,7 +275,6 @@
                 </p>
               </div>
             </div>
-
             <div class="skill-item">
               <p class="skill-img"><img src="img/strengths04_icon.png" alt=""></p>
               <div class="skill-body">
@@ -294,58 +284,36 @@
                 </p>
               </div>
             </div>
-
-
           </div>
         </div>
       </section>
-      <!-- /skill -->
-
-
+      <!-- /strengths -->
 
       <!-- contact -->
       <section class="contact section" id="contact">
         <div class="inner">
           <h2 class="title en">Contact</h2>
           <p class="title_p">お問い合わせ</p>
-
           <p class="contact-icon"><img src="img/mail.png" alt=""></p>
-
-
-
-
 
           <section class="content">
             <div class="content__image">
               <img class="content__img" src="img/contact-img.jpg" alt="">
             </div>
-
             <div class="content__text">
-
-
-
               <p class="lead">
                 ご覧いただきありがとうございます。<br>
                 ご質問などございましたら、下記メールアドレスよりお気軽にお問い合わせください。
               </p>
-
-
               <a class="contact-item" href="mailto:misa19qq@gmail.com">
                 misa19qq@gmail.com
               </a>
-
-
             </div>
           </section>
-
-
-
-
-
-
         </div>
       </section>
       <!-- /contact -->
+
       <div class="page-top" id="js-page-top">
         <span class="material-icons-outlined">expand_less</span>
       </div>
@@ -358,6 +326,7 @@
     <!-- /footer -->
 
   </div>
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type='text/javascript' src="js/script.js"></script>
 </body>
