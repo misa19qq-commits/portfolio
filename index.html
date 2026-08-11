@@ -37,38 +37,7 @@
 <body>
 
   <!-- 🔒 パスワード認証スクリプト -->
-  <script>
-    const password = "1999";
-    const input = prompt("パスワードを入力してください");
-
-    if (input === password) {
-      // パスワードが合っていれば、隠していた画面を表示する
-      document.body.style.display = "block";
-    } else {
-      // パスワードが違う場合、画面をエラーメッセージだけにして、
-      // これより下のHTMLの読み込みを【完全にストップ】させる
-      document.documentElement.innerHTML = `
-        <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width,initial-scale=1.0">
-          <style>
-            body {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              height: 100vh;
-              margin: 0;
-              font-family: sans-serif;
-            }
-          </style>
-        </head>
-        <body>
-          <h1>パスワードが違います</h1>
-        </body>
-      `;
-      window.stop(); // 🚨重要：ここでHTMLの読み込みを強制終了！
-    }
-  </script>
+  
 
 
   <!-- 🔒 パスワード認証スクリプト（初回のみ・保存機能付き） -->
